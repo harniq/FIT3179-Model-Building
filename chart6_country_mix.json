@@ -1,0 +1,38 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Country-group shares within each category's matched entries.",
+  "width": "container",
+  "height": 350,
+  "autosize": {"type": "fit", "contains": "padding"},
+  "data": {"url": "data_country_mix.json"},
+  "mark": "bar",
+  "encoding": {
+    "y": {
+      "field": "category", "type": "nominal", "title": null,
+      "sort": ["Aircraft", "Civilian vehicles", "Military vehicles", "Sci-fi & mecha", "Figures", "Vignettes", "Dioramas", "Junior", "Ships", "Open / other", "Special themes"]
+    },
+    "x": {
+      "field": "entries", "type": "quantitative", "stack": "normalize",
+      "axis": {"title": "Share of this category's matched entries", "format": ".0%"}
+    },
+    "color": {
+      "field": "company_group", "type": "nominal",
+      "scale": {
+        "domain": ["Japan", "Europe", "China", "US & South Korea"],
+        "range": ["#23684f", "#c7683d", "#215b87", "#8a789c"]
+      },
+      "legend": {"title": "Company-country group", "columns": 2, "labelLimit": 200, "titleLimit": 300}
+    },
+    "tooltip": [
+      {"field": "category", "title": "Category"},
+      {"field": "company_group", "title": "Company-country group"},
+      {"field": "entries", "type": "quantitative", "title": "Matched entries"},
+      {"field": "within_category", "type": "quantitative", "title": "Share of category's matches", "format": ".1%"}
+    ]
+  },
+  "config": {
+    "view": {"stroke": null},
+    "axis": {"labelFontSize": 12, "titleFontSize": 12},
+    "legend": {"orient": "bottom", "labelFontSize": 12, "titleFontSize": 12}
+  }
+}

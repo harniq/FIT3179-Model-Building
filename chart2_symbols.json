@@ -1,0 +1,37 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Circle area represents matched entries by company country.",
+  "width": "container",
+  "height": 360,
+  "autosize": {"type": "fit", "contains": "padding"},
+  "projection": {"type": "equalEarth"},
+  "layer": [
+    {
+      "data": {"url": "world-map.json", "format": {"type": "topojson", "feature": "countries"}},
+      "transform": [{"filter": "datum.id != 10"}],
+      "mark": {"type": "geoshape", "fill": "#e1e7df", "stroke": "white"}
+    },
+    {
+      "data": {"url": "data_countries.json"},
+      "mark": {"type": "circle", "color": "#23684f", "opacity": 0.65, "stroke": "#164b39"},
+      "encoding": {
+        "longitude": {"field": "lon", "type": "quantitative"},
+        "latitude": {"field": "lat", "type": "quantitative"},
+        "size": {
+          "field": "entries", "type": "quantitative",
+          "scale": {"domain": [0, 180], "range": [0, 2200]},
+          "legend": {"title": "Matched entries", "values": [15, 50, 150]}
+        },
+        "tooltip": [
+          {"field": "country", "title": "Company country"},
+          {"field": "entries", "type": "quantitative", "title": "Matched entries"},
+          {"field": "mapped_share", "type": "quantitative", "title": "Share of 353 matches", "format": ".1%"}
+        ]
+      }
+    }
+  ],
+  "config": {
+    "view": {"stroke": null},
+    "legend": {"orient": "bottom", "labelFontSize": 12, "titleFontSize": 12}
+  }
+}

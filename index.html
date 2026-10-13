@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Small Models, Big World</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.jsdelivr.net/npm/vega@5.33.1/build/vega.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega-lite@5.23.0/build/vega-lite.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega-embed@6.29.0/build/vega-embed.min.js"></script>
+</head>
+<body>
+  <header>
+    <p class="eyebrow">MODEL BUILDING</p>
+    <h1>Small Models, Big World</h1>
+    <p>What Australian competition tables reveal about model subjects, scales and kit brands.</p>
+    <p class="byline">Harniq Singh · FIT3179 · 12 October 2026</p>
+  </header>
+
+  <main>
+    <section>
+      <h2>1. What is on the workbench?</h2>
+      <p>Model builders turn kits into miniature aircraft, vehicles, ships and imagined worlds.
+        ScaleACT 2025 in Canberra recorded <strong>817 model entries</strong>, including
+        <strong>259 aircraft</strong>. Each entry is a model, so one person can contribute several entries.</p>
+      <p>A scale of <strong>1/48</strong> means the model is one forty-eighth of the real object's size.
+        For the same object, a 1/72 model is smaller than a 1/48 model.</p>
+      <h3>Chart 1 · Different subjects favour different scales</h3>
+      <p>Darker cells show a larger share of that category. Hover to see the count and percentage.</p>
+      <div id="chart1" class="chart" aria-label="Heatmap of category and model scale"></div>
+      <p class="note">All 817 ScaleACT entries. Other scales combines the remaining scales.
+        Dioramas and vignettes are model scenes, mecha are fictional robots.
+        Junior and special-theme classes follow the organiser's categories.</p>
+    </section>
+
+    <section>
+      <h2>2. A local hobby with global brands</h2>
+      <p>The next three maps link competition entries to kit-company countries.
+        <strong>353 of 817 entries (43.2%)</strong> could be matched to 19 verified brands.
+        The other 464 entries are excluded from these maps.</p>
+      <p class="note">Company country means the country of the current company or owner.
+        It does not identify where the kit was manufactured or where the builder lives.</p>
+      <h3>Chart 2 · Where are the matched kit companies based?</h3>
+      <p>Circle area shows the number of matched entries. Japan accounts for 169 of the 353 matches.</p>
+      <div id="chart2" class="chart" aria-label="Proportional symbol map of matched entries"></div>
+
+      <h3>Chart 3 · How much of each country's matched total is aircraft?</h3>
+      <p>Colour shows a percentage within each country. For Czechia, 38 of 39 matched entries
+        are aircraft; for Japan, the figure is 42 of 169.</p>
+      <div id="chart3" class="chart" aria-label="Choropleth map of aircraft share"></div>
+      <p class="note">Grey means no matched entries or fewer than 10 matches.
+        Percentages describe this matched sample, rather than a country's whole model industry.</p>
+
+      <h3>Chart 4 · Overseas companies connect to a Canberra exhibition</h3>
+      <p>Thicker lines represent more entries linked to that company country.
+        The orange diamond marks Canberra, where the models were exhibited.</p>
+      <div id="chart4" class="chart" aria-label="Flow map connecting company countries to Canberra"></div>
+      <p class="note">These are brand-to-exhibition connections. The lines are schematic,
+        they do not measure shipping routes or the builders' journeys.</p>
+    </section>
+
+    <section>
+      <h2>3. Brands and subjects meet</h2>
+      <p>A country's total can hide differences between model subjects.
+        Explore which verified brands appear, then compare the country mix within each category.</p>
+      <h3>Chart 5 · Which brands appear in each category?</h3>
+      <p>Choose a category below the chart. Each dot shows that brand's number of matched entries.</p>
+      <div id="chart5" class="chart" aria-label="Lollipop chart of brands with a category dropdown"></div>
+      <p class="note">Only the 19 verified brands are included. Brands with no entries in the selected category disappear.</p>
+
+      <h3>Chart 6 · The country mix changes with the subject</h3>
+      <p>Each bar adds to 100% of that category's matched entries.
+        Japan-based companies account for the largest share of matched civilian-vehicle and science-fiction entries.</p>
+      <div id="chart6" class="chart" aria-label="Percentage stacked bars of company country groups"></div>
+      <p class="note">Europe combines the UK, Czechia, Germany, Italy, Ukraine and Poland.
+        US &amp; South Korea combines those two countries. Hover for counts,
+        some categories have very few matches.</p>
+    </section>
+
+    <section>
+      <h2>4. Scale shapes the finished build</h2>
+      <h3>Chart 7 · Do two shows have the same scale preferences?</h3>
+      <p>At ScaleACT 2025, 1/35 is the most common scale. At the NSW Scale Model Show 2026,
+        1/48 leads. Percentages let us compare shows of different sizes.</p>
+      <div id="chart7" class="chart" aria-label="Grouped bars comparing scale shares between two shows"></div>
+      <p class="note">Seven selected scales. Percentages use all entries at each show:
+        817 for ScaleACT 2025 and 322 for NSW 2026. Other scales are omitted from this chart.</p>
+    </section>
+
+    <section>
+      <h2>5. A small change at one show</h2>
+      <h3>Chart 8 · NSW entries increased by nine</h3>
+      <p>The NSW show recorded 313 entries in 2025 and 322 in 2026, an increase of 2.9%.
+        This is a one-year comparison at one event, it does not establish a national trend.</p>
+      <div id="chart8" class="chart" aria-label="Line chart of NSW entries in 2025 and 2026"></div>
+      <p class="note">The vertical axis starts at zero to keep the size of the change in proportion.</p>
+    </section>
+
+  </main>
+
+  <footer>
+    <h2>Sources and acknowledgement</h2>
+    <p>Event data: <a href="https://actsms.enter.hobbyshow.org/show-results/10?view=results">ScaleACT 2025</a>,
+      <a href="https://ipma.enter.hobbyshow.org/show-results/5?view=stats">NSW 2025</a> and
+      <a href="https://ipma.enter.hobbyshow.org/show-results/6?view=stats">NSW 2026</a>.
+      Retrieved 12 October 2026.</p>
+    <p>Country locations use official company profiles.
+      <a href="SOURCES.txt">Source links and data preparation notes</a> include all 19 brands.
+      Map boundaries: Natural Earth via Vega datasets. Charts: Vega-Lite.</p>
+    <p>ChatGPT assisted with research, data preparation, and explanatory wording.
+    </p>
+  </footer>
+  <script src="app.js"></script>
+</body>
+</html>

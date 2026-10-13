@@ -1,0 +1,38 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Scale shares use each event's full entry total as the denominator.",
+  "width": "container",
+  "height": 330,
+  "autosize": {"type": "fit", "contains": "padding"},
+  "data": {"url": "data_scales.json"},
+  "mark": "bar",
+  "encoding": {
+    "x": {
+      "field": "scale", "type": "ordinal", "title": "Model scale",
+      "sort": ["1/12", "1/24", "1/32", "1/35", "1/48", "1/72", "1/144"],
+      "axis": {"labelAngle": 0}
+    },
+    "xOffset": {"field": "event", "type": "nominal"},
+    "y": {
+      "field": "share", "type": "quantitative",
+      "scale": {"zero": true},
+      "axis": {"title": "Share of all entries at that show", "format": ".0%"}
+    },
+    "color": {
+      "field": "event", "type": "nominal",
+      "scale": {"domain": ["ScaleACT 2025", "NSW 2026"], "range": ["#23684f", "#c7683d"]},
+      "legend": {"title": "Show"}
+    },
+    "tooltip": [
+      {"field": "event", "title": "Show"},
+      {"field": "scale", "title": "Scale"},
+      {"field": "entries", "type": "quantitative", "title": "Entries"},
+      {"field": "share", "type": "quantitative", "title": "Share of all entries", "format": ".1%"}
+    ]
+  },
+  "config": {
+    "view": {"stroke": null},
+    "axis": {"labelFontSize": 12, "titleFontSize": 12},
+    "legend": {"orient": "bottom", "labelFontSize": 12, "titleFontSize": 12}
+  }
+}

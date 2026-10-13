@@ -1,0 +1,27 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "A two-year comparison at one show, not a national trend.",
+  "width": "container",
+  "height": 280,
+  "autosize": {"type": "fit", "contains": "padding"},
+  "data": {"url": "data_trend.json"},
+  "encoding": {
+    "x": {"field": "year", "type": "ordinal", "title": "NSW show year", "axis": {"labelAngle": 0}},
+    "y": {"field": "entries", "type": "quantitative", "title": "Model entries", "scale": {"domain": [0, 350]}},
+    "tooltip": [
+      {"field": "year", "type": "ordinal", "title": "Year"},
+      {"field": "entries", "type": "quantitative", "title": "Model entries"}
+    ]
+  },
+  "layer": [
+    {"mark": {"type": "line", "point": true, "color": "#23684f", "strokeWidth": 3}},
+    {
+      "mark": {"type": "text", "dy": -15, "fontSize": 14, "fontWeight": "bold"},
+      "encoding": {"text": {"field": "entries"}}
+    }
+  ],
+  "config": {
+    "view": {"stroke": null},
+    "axis": {"labelFontSize": 12, "titleFontSize": 12}
+  }
+}

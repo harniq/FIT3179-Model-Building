@@ -1,0 +1,36 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Scale preferences within each ScaleACT 2025 category.",
+  "width": "container",
+  "height": 350,
+  "autosize": {"type": "fit", "contains": "padding"},
+  "data": {"url": "data_heatmap.json"},
+  "mark": {"type": "rect", "stroke": "white", "strokeWidth": 1},
+  "encoding": {
+    "x": {
+      "field": "scale", "type": "ordinal", "title": null,
+      "sort": ["1/12", "1/24", "1/32", "1/35", "1/48", "1/72", "1/144", "1/350", "1/700", "Other scales"],
+      "axis": {"labelAngle": -35}
+    },
+    "y": {
+      "field": "category", "type": "nominal", "title": null,
+      "sort": ["Aircraft", "Civilian vehicles", "Military vehicles", "Sci-fi & mecha", "Figures", "Vignettes", "Dioramas", "Junior", "Ships", "Open / other", "Special themes"]
+    },
+    "color": {
+      "field": "within_category", "type": "quantitative",
+      "scale": {"domain": [0, 1], "range": ["#edf3e7", "#155638"]},
+      "legend": {"title": "Share within category", "format": ".0%", "titleLimit": 300, "gradientLength": 240, "values": [0, 0.25, 0.5, 0.75, 1]}
+    },
+    "tooltip": [
+      {"field": "category", "title": "Category"},
+      {"field": "scale", "title": "Scale"},
+      {"field": "entries", "type": "quantitative", "title": "Entries"},
+      {"field": "within_category", "type": "quantitative", "title": "Share of category", "format": ".1%"}
+    ]
+  },
+  "config": {
+    "view": {"stroke": null},
+    "axis": {"labelFontSize": 12, "titleFontSize": 12},
+    "legend": {"orient": "bottom", "labelFontSize": 12, "titleFontSize": 12}
+  }
+}

@@ -1,0 +1,43 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Aircraft share within each country's matched entries; minimum ten matches.",
+  "width": "container",
+  "height": 360,
+  "autosize": {"type": "fit", "contains": "padding"},
+  "projection": {"type": "equalEarth"},
+  "data": {"url": "world-map.json", "format": {"type": "topojson", "feature": "countries"}},
+  "transform": [
+    {"filter": "datum.id != 10"},
+    {
+      "lookup": "id",
+      "from": {
+        "data": {"url": "data_countries.json"}, "key": "id",
+        "fields": ["country", "entries", "aircraft_entries", "aircraft_share"]
+      }
+    }
+  ],
+  "layer": [
+    {"mark": {"type": "geoshape", "fill": "#e1e7df", "stroke": "white"}},
+    {
+      "transform": [{"filter": "datum.entries >= 10"}],
+      "mark": {"type": "geoshape", "stroke": "white"},
+      "encoding": {
+        "color": {
+          "field": "aircraft_share", "type": "quantitative",
+          "scale": {"domain": [0, 1], "range": ["#f3e9b8", "#105b3d"]},
+          "legend": {"title": "Aircraft share within country", "format": ".0%", "titleLimit": 300, "gradientLength": 260, "values": [0, 0.25, 0.5, 0.75, 1]}
+        },
+        "tooltip": [
+          {"field": "country", "title": "Company country"},
+          {"field": "aircraft_entries", "type": "quantitative", "title": "Aircraft entries"},
+          {"field": "entries", "type": "quantitative", "title": "All matched entries"},
+          {"field": "aircraft_share", "type": "quantitative", "title": "Aircraft share", "format": ".1%"}
+        ]
+      }
+    }
+  ],
+  "config": {
+    "view": {"stroke": null},
+    "legend": {"orient": "bottom", "labelFontSize": 12, "titleFontSize": 12}
+  }
+}

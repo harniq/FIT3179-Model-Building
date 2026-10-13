@@ -1,0 +1,39 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Matched brand counts with a category dropdown.",
+  "width": "container",
+  "height": 410,
+  "autosize": {"type": "fit", "contains": "padding"},
+  "data": {"url": "data_brands.json"},
+  "params": [{
+    "name": "categoryChoice", "value": "All categories",
+    "bind": {
+      "input": "select", "name": "Category: ",
+      "options": ["All categories", "Aircraft", "Civilian vehicles", "Military vehicles", "Sci-fi & mecha", "Figures", "Vignettes", "Dioramas", "Junior", "Ships", "Open / other", "Special themes"]
+    }
+  }],
+  "transform": [
+    {"filter": "categoryChoice == 'All categories' || datum.category == categoryChoice"},
+    {"aggregate": [{"op": "sum", "field": "entries", "as": "entries"}], "groupby": ["brand", "country"]}
+  ],
+  "encoding": {
+    "y": {"field": "brand", "type": "nominal", "sort": "-x", "title": null},
+    "x": {"field": "entries", "type": "quantitative", "title": "Matched entries", "scale": {"zero": true}, "axis": {"tickMinStep": 1}},
+    "tooltip": [
+      {"field": "brand", "title": "Brand"},
+      {"field": "country", "title": "Company country"},
+      {"field": "entries", "type": "quantitative", "title": "Matched entries"}
+    ]
+  },
+  "layer": [
+    {
+      "mark": {"type": "rule", "color": "#23684f", "strokeWidth": 2},
+      "encoding": {"x": {"datum": 0}, "x2": {"field": "entries"}}
+    },
+    {"mark": {"type": "circle", "color": "#23684f", "size": 85}}
+  ],
+  "config": {
+    "view": {"stroke": null},
+    "axis": {"labelFontSize": 12, "titleFontSize": 12}
+  }
+}
