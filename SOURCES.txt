@@ -36,7 +36,7 @@ enter several models. No chart here treats the number of models as people.
 | `data_country_mix.json` | Group matched entries into Japan, Europe, China, and US & South Korea, separately for each category. `within_category = entries / matched entries in that category`. Total: 353. |
 | `data_scales.json` | Counts for seven selected scales from ScaleACT 2025 and NSW 2026. Divide by 817 or 322 respectively. These seven scales do not exhaust either event. |
 | `data_trend.json` | Published NSW event totals: 313 in 2025 and 322 in 2026. Increase = 9 / 313, or 2.9%. Only year and entries are drawn. |
-| `world-map.json` | Natural Earth country geometry distributed by [Vega datasets](https://github.com/vega/vega-datasets/blob/main/data/world-110m.json). Public-domain Natural Earth boundaries; this is supplied geometry, not student-authored code. |
+| `world-map.json` | Natural Earth country geometry distributed by [Vega datasets](https://github.com/vega/vega-datasets/blob/main/data/world-110m.json). Public-domain Natural Earth boundaries; this is supplied geometry. |
 
 Country coordinates are approximate reference locations used to place symbols
 and relationship endpoints. They are not addresses, factory sites, shipment
