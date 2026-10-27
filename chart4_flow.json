@@ -3,7 +3,7 @@
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "description": "Straight schematic connections from kit company countries to the Canberra exhibition, not shipping routes.",
   "width": "container",
-  "height": 450,
+  "height": 350,
   "autosize": {"type": "fit", "contains": "padding"},
   "background": "transparent",
   "projection": {"type": "equalEarth"},
@@ -36,8 +36,7 @@
         "strokeWidth": {
           "field": "entries", "type": "quantitative",
           "scale": {"domain": [0, 180], "range": [0, 10]},
-          "legend": {"title": "Matched entries", "values": [15, 50, 150]}
-        },
+          "legend": {"title": "Matched entries", "values": [15, 50, 150], "orient": "bottom", "direction": "horizontal", "offset": 10},
         "opacity": {
           "condition": {"test": "countryFocus == 'All countries' || datum.country == countryFocus", "value": 0.8},
           "value": 0.035
