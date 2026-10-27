@@ -26,9 +26,14 @@
     "tooltip": [{"field": "brand", "title": "Brand"}, {"field": "country", "title": "Company country"}, {"field": "entries", "type": "quantitative", "title": "Matched entries"}]
   },
   "layer": [
-    {"mark": {"type": "rule", "color": "#23634c", "strokeWidth": 2}, "encoding": {"x": {"datum": 0}, "x2": {"field": "entries"}}},
-    {"mark": {"type": "circle", "color": "#23634c", "size": 85}}
-  ],
+  {"mark": {"type": "rule", "color": "#23634c", "strokeWidth": 2}, "encoding": {"x": {"datum": 0}, "x2": {"field": "entries"}}},
+  {"mark": {"type": "circle", "color": "#23634c", "size": 85}},
+  {
+    "transform": [{"filter": "datum.brand == 'Tamiya' && categoryChoice == 'All categories'"}],
+    "mark": {"type": "text", "align": "right", "dx": -12, "dy": 10, "fontSize": 11, "fontWeight": "bold", "color": "#b65d35"},
+    "encoding": {"text": {"value": "Tamiya: 106 entries"}}
+  }
+],
   "config": {
     "background": "transparent",
     "font": "IBM Plex Sans",
