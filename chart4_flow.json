@@ -1,16 +1,16 @@
+
 {
-  "$schema": "https://vega.github.io/schema/vega/v5.json",
-  "description": "Curved schematic connections to Canberra. Curves are not measured shipping routes.",
-  "width": 900,
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Straight schematic connections from kit company countries to the Canberra exhibition, not shipping routes.",
+  "width": "container",
   "height": 450,
-  "padding": 5,
   "autosize": {"type": "fit", "contains": "padding"},
   "background": "transparent",
+  "projection": {"type": "equalEarth"},
 
-  "signals": [
+  "params": [
     {
-      "name": "countryFocus",
-      "value": "All countries",
+      "name": "countryFocus", "value": "All countries",
       "bind": {
         "input": "select", "name": "Company country: ",
         "options": ["All countries", "Japan", "United Kingdom", "Czechia", "China", "Germany",
@@ -19,110 +19,83 @@
     }
   ],
 
-  "projections": [
-    {"name": "worldProjection", "type": "equalEarth",
-     "fit": {"signal": "data('world')"}, "size": {"signal": "[width, height-30]"}}
-  ],
-
-  "data": [
+  "layer": [
     {
-      "name": "world", "url": "world-map.json",
-      "format": {"type": "topojson", "feature": "countries"},
-      "transform": [{"type": "filter", "expr": "datum.id != 10"}]
+      "data": {"url": "world-map.json", "format": {"type": "topojson", "feature": "countries"}},
+      "transform": [{"filter": "datum.id != 10"}],
+      "mark": {"type": "geoshape", "fill": "#e5eae3", "stroke": "white", "strokeWidth": 0.7}
     },
     {
-      "name": "destination",
-      "values": [{"lon": 149.13, "lat": -35.28, "place": "Canberra"}],
-      "transform": [{"type": "geopoint", "projection": "worldProjection",
-                     "fields": ["lon", "lat"], "as": ["x", "y"]}]
+      "data": {"url": "data_countries.json"},
+      "mark": {"type": "rule", "color": "#23634c"},
+      "encoding": {
+        "longitude": {"field": "lon", "type": "quantitative"},
+        "latitude": {"field": "lat", "type": "quantitative"},
+        "longitude2": {"datum": 149.13},
+        "latitude2": {"datum": -35.28},
+        "strokeWidth": {
+          "field": "entries", "type": "quantitative",
+          "scale": {"domain": [0, 180], "range": [0, 10]},
+          "legend": {"title": "Matched entries", "values": [15, 50, 150]}
+        },
+        "opacity": {
+          "condition": {"test": "countryFocus == 'All countries' || datum.country == countryFocus", "value": 0.8},
+          "value": 0.035
+        },
+        "tooltip": [
+          {"field": "country", "type": "nominal", "title": "Company country"},
+          {"field": "entries", "type": "quantitative", "title": "Matched entries"}
+        ]
+      }
     },
     {
-      "name": "countries", "url": "data_countries.json",
-      "transform": [
-        {"type": "geopoint", "projection": "worldProjection",
-         "fields": ["lon", "lat"], "as": ["x", "y"]},
-        {"type": "linkpath", "orient": "horizontal", "shape": "diagonal",
-         "sourceX": "x", "sourceY": "y",
-         "targetX": {"expr": "data('destination')[0].x"},
-         "targetY": {"expr": "data('destination')[0].y"}, "as": "curve"}
-      ]
+      "data": {"url": "data_countries.json"},
+      "mark": {"type": "circle", "color": "#23634c", "size": 35, "stroke": "white"},
+      "encoding": {
+        "longitude": {"field": "lon", "type": "quantitative"},
+        "latitude": {"field": "lat", "type": "quantitative"},
+        "opacity": {
+          "condition": {"test": "countryFocus == 'All countries' || datum.country == countryFocus", "value": 1},
+          "value": 0.2
+        },
+        "tooltip": [
+          {"field": "country", "type": "nominal", "title": "Company country"},
+          {"field": "entries", "type": "quantitative", "title": "Matched entries"}
+        ]
+      }
+    },
+    {
+      "data": {"url": "data_countries.json"},
+      "transform": [{"filter": "countryFocus != 'All countries' && datum.country == countryFocus"}],
+      "mark": {"type": "text", "dy": -12, "fontSize": 12, "fontWeight": "bold", "color": "#20372f"},
+      "encoding": {
+        "longitude": {"field": "lon", "type": "quantitative"},
+        "latitude": {"field": "lat", "type": "quantitative"},
+        "text": {"field": "country"}
+      }
+    },
+    {
+      "data": {"values": [{"lon": 149.13, "lat": -35.28, "place": "Canberra"}]},
+      "mark": {"type": "point", "shape": "diamond", "filled": true, "size": 140,
+               "color": "#b65d35", "stroke": "white", "strokeWidth": 1.5},
+      "encoding": {
+        "longitude": {"field": "lon", "type": "quantitative"},
+        "latitude": {"field": "lat", "type": "quantitative"}
+      }
+    },
+    {
+      "data": {"values": [{"lon": 149.13, "lat": -35.28, "place": "Canberra"}]},
+      "mark": {"type": "text", "dy": 23, "fontSize": 13, "fontWeight": "bold", "color": "#20372f"},
+      "encoding": {
+        "longitude": {"field": "lon", "type": "quantitative"},
+        "latitude": {"field": "lat", "type": "quantitative"},
+        "text": {"field": "place"}
+      }
     }
   ],
 
-  "scales": [
-    {"name": "lineSize", "type": "linear", "domain": [0, 180],
-     "range": [0, 10], "zero": true}
-  ],
-
-  "marks": [
-    {
-      "type": "shape", "from": {"data": "world"},
-      "transform": [{"type": "geoshape", "projection": "worldProjection"}],
-      "encode": {"update": {
-        "fill": {"value": "#e5eae3"}, "stroke": {"value": "white"},
-        "strokeWidth": {"value": 0.7}
-      }}
-    },
-    {
-      "name": "routes", "type": "path", "from": {"data": "countries"},
-      "encode": {"update": {
-        "path": {"field": "curve"}, "fill": {"value": null},
-        "stroke": {"value": "#23634c"},
-        "strokeWidth": {"scale": "lineSize", "field": "entries"},
-        "strokeOpacity": {"signal": "countryFocus == 'All countries' || datum.country == countryFocus ? 0.8 : 0.035"},
-        "tooltip": {"signal": "{'Company country':datum.country,'Matched entries':datum.entries,'Destination':'Canberra exhibition','Connection':'Schematic, not a shipping route'}"}
-      }}
-    },
-    {
-      "name": "origins", "type": "symbol", "from": {"data": "countries"},
-      "encode": {"update": {
-        "x": {"field": "x"}, "y": {"field": "y"},
-        "size": {"value": 35}, "fill": {"value": "#23634c"},
-        "stroke": {"value": "white"},
-        "opacity": {"signal": "countryFocus == 'All countries' || datum.country == countryFocus ? 1 : 0.2"},
-        "tooltip": {"signal": "{'Company country':datum.country,'Matched entries':datum.entries}"}
-      }}
-    },
-    {
-      "type": "text", "from": {"data": "countries"},
-      "encode": {"update": {
-        "x": {"field": "x"}, "y": {"field": "y"},
-        "dy": {"value": -12}, "align": {"value": "center"},
-        "font": {"value": "IBM Plex Sans"}, "fontSize": {"value": 12},
-        "fontWeight": {"value": 600}, "fill": {"value": "#20372f"},
-        "text": {"field": "country"},
-        "opacity": {"signal": "countryFocus != 'All countries' && datum.country == countryFocus ? 1 : 0"}
-      }}
-    },
-    {
-      "type": "symbol", "from": {"data": "destination"},
-      "encode": {"update": {
-        "x": {"field": "x"}, "y": {"field": "y"},
-        "shape": {"value": "diamond"}, "size": {"value": 140},
-        "fill": {"value": "#b65d35"}, "stroke": {"value": "white"},
-        "strokeWidth": {"value": 1.5}
-      }}
-    },
-    {
-      "type": "text", "from": {"data": "destination"},
-      "encode": {"update": {
-        "x": {"field": "x"}, "y": {"field": "y"},
-        "dy": {"value": 23}, "align": {"value": "center"},
-        "text": {"value": "Canberra"}, "font": {"value": "IBM Plex Sans"},
-        "fontSize": {"value": 13}, "fontWeight": {"value": 600},
-        "fill": {"value": "#20372f"}
-      }}
-    }
-  ],
-
-  "legends": [
-    {
-      "strokeWidth": "lineSize", "orient": "bottom",
-      "title": "Matched entries", "values": [15, 50, 150],
-      "symbolType": "stroke", "symbolStrokeColor": "#23634c",
-      "symbolSize": 500, "labelFont": "IBM Plex Sans",
-      "titleFont": "IBM Plex Sans", "labelFontSize": 12,
-      "titleFontSize": 12, "titleFontWeight": 500
-    }
-  ]
+  "config": {
+    "font": "IBM Plex Sans", "view": {"stroke": null},
+    "legend": {"orient": "bottom", "labelFontSize": 12, "titleFontSize": 12}
+  }
 }
