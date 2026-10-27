@@ -5,7 +5,12 @@
   "height": 350,
   "autosize": {"type": "fit", "contains": "padding"},
   "data": {"url": "data_scales.json"},
-  "mark": "bar",
+  "layer": [
+  {"mark": "bar"},
+  {"transform": [{"filter": "datum.event == 'NSW 2026' && datum.scale == '1/48'"}],
+   "mark": {"type": "text", "dy": -10, "fontSize": 12, "fontWeight": "bold"},
+   "encoding": {"text": {"value": "26.4%"}}}
+  ],
   "encoding": {
     "x": {"field": "scale", "type": "ordinal", "title": "Model scale", "sort": ["1/12", "1/24", "1/32", "1/35", "1/48", "1/72", "1/144"], "axis": {"labelAngle": 0}},
     "xOffset": {"field": "event", "type": "nominal", "sort": ["ScaleACT 2025", "NSW 2026"]},
