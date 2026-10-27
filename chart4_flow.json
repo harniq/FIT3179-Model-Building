@@ -36,7 +36,7 @@
         "strokeWidth": {
           "field": "entries", "type": "quantitative",
           "scale": {"domain": [0, 180], "range": [0, 10]},
-          "legend": {"title": "Matched entries", "values": [15, 50, 150], "orient": "bottom", "direction": "horizontal", "offset": 10},
+          "legend": {"title": "Matched entries", "values": [15, 50, 150], "orient": "bottom", "direction": "horizontal", "offset": 10}},
         "opacity": {
           "condition": {"test": "countryFocus == 'All countries' || datum.country == countryFocus", "value": 0.8},
           "value": 0.035
