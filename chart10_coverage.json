@@ -1,0 +1,33 @@
+{
+  "$schema": "https://vega.github.io/schema/vega/v5.json",
+  "description": "Coverage waffle: exactly 353 matched and 464 unmatched entries, one tile per entry. Tiles represent aggregate counts, not identified people.",
+  "width": 500,
+  "height": 210,
+  "padding": 0,
+  "autosize": {"type": "fit", "contains": "padding"},
+  "background": "transparent",
+  "data": [
+    {
+      "name": "tiles",
+      "transform": [{"type": "sequence", "start": 0, "stop": 817, "as": "tile"}, {"type": "formula", "expr": "datum.tile < 353 ? 'Matched' : 'Unmatched'", "as": "status"}]
+    }
+  ],
+  "marks": [
+    {
+      "type": "rect",
+      "from": {"data": "tiles"},
+      "encode": {
+        "update": {
+          "x": {"signal": "(datum.tile % 43) * width / 43"},
+          "y": {"signal": "floor(datum.tile / 43) * height / 19"},
+          "width": {"signal": "width/43-1.4"},
+          "height": {"signal": "height/19-1.4"},
+          "fill": {"signal": "datum.status == 'Matched' ? '#23634c' : '#dee4dc'"},
+          "tooltip": {
+            "signal": "{'Status':datum.status,'Entries in group':datum.status == 'Matched' ? 353 : 464,'Share of 817':datum.status == 'Matched' ? '43.2%' : '56.8%','One tile':'One model entry'}"
+          }
+        }
+      }
+    }
+  ]
+}

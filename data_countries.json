@@ -1,0 +1,12 @@
+[
+  {"country":"Japan","id":392,"lon":138,"lat":37,"entries":169,"aircraft_entries":42,"aircraft_share":0.2485207100591716,"mapped_share":0.47875354107648727,"adequate_sample":true},
+  {"country":"United Kingdom","id":826,"lon":-3,"lat":55,"entries":39,"aircraft_entries":23,"aircraft_share":0.5897435897435898,"mapped_share":0.11048158640226628,"adequate_sample":true},
+  {"country":"Czechia","id":203,"lon":15.5,"lat":49.8,"entries":39,"aircraft_entries":38,"aircraft_share":0.9743589743589743,"mapped_share":0.11048158640226628,"adequate_sample":true},
+  {"country":"China","id":156,"lon":104,"lat":35,"entries":31,"aircraft_entries":14,"aircraft_share":0.45161290322580644,"mapped_share":0.08781869688385269,"adequate_sample":true},
+  {"country":"Germany","id":276,"lon":10.4,"lat":51.2,"entries":20,"aircraft_entries":8,"aircraft_share":0.4,"mapped_share":0.056657223796033995,"adequate_sample":true},
+  {"country":"United States","id":840,"lon":-99,"lat":39,"entries":15,"aircraft_entries":0,"aircraft_share":0,"mapped_share":0.042492917847025496,"adequate_sample":true},
+  {"country":"South Korea","id":410,"lon":128,"lat":36,"entries":14,"aircraft_entries":9,"aircraft_share":0.6428571428571429,"mapped_share":0.039660056657223795,"adequate_sample":true},
+  {"country":"Italy","id":380,"lon":12.5,"lat":42.5,"entries":14,"aircraft_entries":7,"aircraft_share":0.5,"mapped_share":0.039660056657223795,"adequate_sample":true},
+  {"country":"Ukraine","id":804,"lon":31,"lat":49,"entries":7,"aircraft_entries":5,"aircraft_share":0.7142857142857143,"mapped_share":0.019830028328611898,"adequate_sample":false},
+  {"country":"Poland","id":616,"lon":19,"lat":52,"entries":5,"aircraft_entries":5,"aircraft_share":1,"mapped_share":0.014164305949008499,"adequate_sample":false}
+]

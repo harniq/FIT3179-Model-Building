@@ -1,0 +1,48 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Company-country counts for 353 matched entries.",
+  "width": "container",
+  "height": 285,
+  "autosize": {"type": "fit", "contains": "padding"},
+  "config": {
+    "background": "transparent",
+    "font": "IBM Plex Sans",
+    "view": {"stroke": null},
+    "axis": {
+      "labelFontSize": 12,
+      "titleFontSize": 12,
+      "titleFontWeight": 500,
+      "labelColor": "#61716a",
+      "titleColor": "#20372f",
+      "domain": false,
+      "tickColor": "#e6ebe6",
+      "gridColor": "#e6ebe6",
+      "labelPadding": 8,
+      "titlePadding": 12
+    },
+    "legend": {"orient": "bottom", "labelFontSize": 12, "titleFontSize": 12, "titleFontWeight": 500, "labelColor": "#20372f", "titleColor": "#20372f", "padding": 10}
+  },
+  "projection": {"type": "equalEarth"},
+  "layer": [
+    {
+      "data": {"url": "world-map.json", "format": {"type": "topojson", "feature": "countries"}},
+      "transform": [{"filter": "datum.id != 10"}],
+      "mark": {"type": "geoshape", "fill": "#e5eae3", "stroke": "white", "strokeWidth": 0.6}
+    },
+    {
+      "data": {"url": "data_countries.json"},
+      "mark": {"type": "circle", "color": "#23634c", "stroke": "#20372f", "strokeWidth": 0.6},
+      "encoding": {
+        "longitude": {"field": "lon", "type": "quantitative"},
+        "latitude": {"field": "lat", "type": "quantitative"},
+        "size": {"field": "entries", "type": "quantitative", "scale": {"domain": [0, 180], "range": [0, 1300]}, "legend": {"title": "Matched entries", "values": [15, 50, 150]}},
+        "opacity": {"value": 0.75},
+        "tooltip": [
+          {"field": "country", "type": "nominal", "title": "Company country"},
+          {"field": "entries", "type": "quantitative", "title": "Matched entries"},
+          {"field": "mapped_share", "type": "quantitative", "title": "Share of 353 matches", "format": ".1%"}
+        ]
+      }
+    }
+  ]
+}

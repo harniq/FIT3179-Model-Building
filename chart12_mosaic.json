@@ -1,0 +1,74 @@
+{
+  "$schema": "https://vega.github.io/schema/vega/v5.json",
+  "description": "Mosaic of ScaleACT categories and scale groups. Column width is category size, cell height is scale share within category, area is share of all 817 entries.",
+  "width": 900,
+  "height": 350,
+  "padding": {"top": 8, "left": 5, "right": 5, "bottom": 48},
+  "autosize": {"type": "fit", "contains": "padding"},
+  "background": "transparent",
+  "data": [
+    {"name": "cells", "url": "data_mosaic.json"},
+    {"name": "columns", "source": "cells", "transform": [{"type": "aggregate", "groupby": ["category", "short", "category_entries", "x0", "x1"]}]}
+  ],
+  "scales": [
+    {"name": "x", "type": "linear", "domain": [0, 1], "range": "width", "zero": true},
+    {"name": "y", "type": "linear", "domain": [0, 1], "range": [0, {"signal": "height"}], "zero": true},
+    {
+      "name": "color",
+      "type": "ordinal",
+      "domain": ["1/35", "1/48", "1/72", "1/24", "Other scales"],
+      "range": ["#23634c", "#346b91", "#b65d35", "#826789", "#b7bdb2"]
+    }
+  ],
+  "legends": [
+    {
+      "fill": "color",
+      "orient": "bottom",
+      "direction": "horizontal",
+      "title": null,
+      "labelFont": "IBM Plex Sans",
+      "labelFontSize": 12,
+      "symbolType": "square",
+      "offset": 30
+    }
+  ],
+  "marks": [
+    {
+      "type": "rect",
+      "from": {"data": "cells"},
+      "encode": {
+        "update": {
+          "x": {"scale": "x", "field": "x0"},
+          "x2": {"scale": "x", "field": "x1"},
+          "y": {"scale": "y", "field": "y0"},
+          "y2": {"scale": "y", "field": "y1"},
+          "fill": {"scale": "color", "field": "scale_group"},
+          "stroke": {"value": "white"},
+          "strokeWidth": {"value": 1.5},
+          "tooltip": {
+            "signal": "{'Category':datum.category,'Scale group':datum.scale_group,'Entries':datum.entries,'Category total':datum.category_entries,'Share within category':format(datum.category_share,'.1%'),'Share of all 817':format(datum.overall_share,'.1%')}"
+          }
+        }
+      }
+    },
+    {
+      "type": "text",
+      "interactive": false,
+      "from": {"data": "columns"},
+      "encode": {
+        "update": {
+          "x": {"signal": "scale('x',(datum.x0+datum.x1)/2)"},
+          "y": {"signal": "height+12"},
+          "text": {"field": "short"},
+          "align": {"value": "center"},
+          "baseline": {"value": "top"},
+          "font": {"value": "IBM Plex Sans"},
+          "fontSize": {"value": 11},
+          "fill": {"value": "#20372f"},
+          "limit": {"signal": "(datum.x1-datum.x0)*width-3"},
+          "opacity": {"signal": "(datum.x1-datum.x0)*width > 25 ? 1 : 0"}
+        }
+      }
+    }
+  ]
+}

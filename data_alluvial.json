@@ -1,0 +1,451 @@
+{
+  "nodes": [
+    {
+      "side": "left",
+      "label": "Japan",
+      "entries": 169,
+      "y0": 0,
+      "y1": 0.39257790368271955
+    },
+    {
+      "side": "left",
+      "label": "Europe",
+      "entries": 124,
+      "y0": 0.45257790368271955,
+      "y1": 0.7406232294617563
+    },
+    {
+      "side": "left",
+      "label": "China",
+      "entries": 31,
+      "y0": 0.8006232294617563,
+      "y1": 0.8726345609065156
+    },
+    {
+      "side": "left",
+      "label": "US & South Korea",
+      "entries": 29,
+      "y0": 0.9326345609065155,
+      "y1": 1.0
+    },
+    {
+      "side": "right",
+      "label": "Aircraft",
+      "entries": 151,
+      "y0": 0,
+      "y1": 0.35076487252124644
+    },
+    {
+      "side": "right",
+      "label": "Civilian vehicles",
+      "entries": 58,
+      "y0": 0.36876487252124646,
+      "y1": 0.5034957507082153
+    },
+    {
+      "side": "right",
+      "label": "Military vehicles",
+      "entries": 41,
+      "y0": 0.5214957507082153,
+      "y1": 0.6167365439093484
+    },
+    {
+      "side": "right",
+      "label": "Sci-fi & mecha",
+      "entries": 43,
+      "y0": 0.6347365439093484,
+      "y1": 0.7346232294617563
+    },
+    {
+      "side": "right",
+      "label": "Figures",
+      "entries": 4,
+      "y0": 0.7526232294617563,
+      "y1": 0.7619150141643058
+    },
+    {
+      "side": "right",
+      "label": "Vignettes",
+      "entries": 11,
+      "y0": 0.7799150141643059,
+      "y1": 0.8054674220963172
+    },
+    {
+      "side": "right",
+      "label": "Dioramas",
+      "entries": 10,
+      "y0": 0.8234674220963172,
+      "y1": 0.8466968838526912
+    },
+    {
+      "side": "right",
+      "label": "Junior",
+      "entries": 14,
+      "y0": 0.8646968838526912,
+      "y1": 0.8972181303116147
+    },
+    {
+      "side": "right",
+      "label": "Ships",
+      "entries": 8,
+      "y0": 0.9152181303116147,
+      "y1": 0.9338016997167139
+    },
+    {
+      "side": "right",
+      "label": "Open / other",
+      "entries": 4,
+      "y0": 0.9518016997167138,
+      "y1": 0.9610934844192633
+    },
+    {
+      "side": "right",
+      "label": "Special themes",
+      "entries": 9,
+      "y0": 0.9790934844192634,
+      "y1": 0.9999999999999999
+    }
+  ],
+  "links": [
+    {
+      "company_group": "Japan",
+      "category": "Aircraft",
+      "entries": 42,
+      "left0": 0,
+      "left1": 0.09756373937677054,
+      "right0": 0,
+      "right1": 0.09756373937677054,
+      "category_share": 0.2781456953642384
+    },
+    {
+      "company_group": "Japan",
+      "category": "Civilian vehicles",
+      "entries": 39,
+      "left0": 0.09756373937677054,
+      "left1": 0.1881586402266289,
+      "right0": 0.36876487252124646,
+      "right1": 0.4593597733711048,
+      "category_share": 0.6724137931034483
+    },
+    {
+      "company_group": "Japan",
+      "category": "Military vehicles",
+      "entries": 24,
+      "left0": 0.1881586402266289,
+      "left1": 0.24390934844192635,
+      "right0": 0.5214957507082153,
+      "right1": 0.5772464589235128,
+      "category_share": 0.5853658536585366
+    },
+    {
+      "company_group": "Japan",
+      "category": "Sci-fi & mecha",
+      "entries": 31,
+      "left0": 0.24390934844192635,
+      "left1": 0.31592067988668554,
+      "right0": 0.6347365439093484,
+      "right1": 0.7067478753541077,
+      "category_share": 0.7209302325581395
+    },
+    {
+      "company_group": "Japan",
+      "category": "Figures",
+      "entries": 1,
+      "left0": 0.31592067988668554,
+      "left1": 0.3182436260623229,
+      "right0": 0.7526232294617563,
+      "right1": 0.7549461756373937,
+      "category_share": 0.25
+    },
+    {
+      "company_group": "Japan",
+      "category": "Vignettes",
+      "entries": 9,
+      "left0": 0.3182436260623229,
+      "left1": 0.33915014164305946,
+      "right0": 0.7799150141643059,
+      "right1": 0.8008215297450424,
+      "category_share": 0.8181818181818182
+    },
+    {
+      "company_group": "Japan",
+      "category": "Dioramas",
+      "entries": 6,
+      "left0": 0.33915014164305946,
+      "left1": 0.3530878186968838,
+      "right0": 0.8234674220963172,
+      "right1": 0.8374050991501415,
+      "category_share": 0.6
+    },
+    {
+      "company_group": "Japan",
+      "category": "Junior",
+      "entries": 7,
+      "left0": 0.3530878186968838,
+      "left1": 0.3693484419263456,
+      "right0": 0.8646968838526912,
+      "right1": 0.8809575070821529,
+      "category_share": 0.5
+    },
+    {
+      "company_group": "Japan",
+      "category": "Open / other",
+      "entries": 2,
+      "left0": 0.3693484419263456,
+      "left1": 0.37399433427762035,
+      "right0": 0.9518016997167138,
+      "right1": 0.9564475920679886,
+      "category_share": 0.5
+    },
+    {
+      "company_group": "Japan",
+      "category": "Special themes",
+      "entries": 8,
+      "left0": 0.37399433427762035,
+      "left1": 0.3925779036827195,
+      "right0": 0.9790934844192634,
+      "right1": 0.9976770538243626,
+      "category_share": 0.8888888888888888
+    },
+    {
+      "company_group": "Europe",
+      "category": "Aircraft",
+      "entries": 86,
+      "left0": 0.45257790368271955,
+      "left1": 0.6523512747875354,
+      "right0": 0.09756373937677054,
+      "right1": 0.2973371104815864,
+      "category_share": 0.5695364238410596
+    },
+    {
+      "company_group": "Europe",
+      "category": "Civilian vehicles",
+      "entries": 9,
+      "left0": 0.6523512747875354,
+      "left1": 0.6732577903682719,
+      "right0": 0.4593597733711048,
+      "right1": 0.4802662889518413,
+      "category_share": 0.15517241379310345
+    },
+    {
+      "company_group": "Europe",
+      "category": "Military vehicles",
+      "entries": 5,
+      "left0": 0.6732577903682719,
+      "left1": 0.6848725212464589,
+      "right0": 0.5772464589235128,
+      "right1": 0.5888611898016998,
+      "category_share": 0.12195121951219512
+    },
+    {
+      "company_group": "Europe",
+      "category": "Sci-fi & mecha",
+      "entries": 8,
+      "left0": 0.6848725212464589,
+      "left1": 0.7034560906515581,
+      "right0": 0.7067478753541077,
+      "right1": 0.7253314447592069,
+      "category_share": 0.18604651162790697
+    },
+    {
+      "company_group": "Europe",
+      "category": "Figures",
+      "entries": 3,
+      "left0": 0.7034560906515581,
+      "left1": 0.7104249291784703,
+      "right0": 0.7549461756373937,
+      "right1": 0.761915014164306,
+      "category_share": 0.75
+    },
+    {
+      "company_group": "Europe",
+      "category": "Vignettes",
+      "entries": 2,
+      "left0": 0.7104249291784703,
+      "left1": 0.7150708215297451,
+      "right0": 0.8008215297450424,
+      "right1": 0.8054674220963172,
+      "category_share": 0.18181818181818182
+    },
+    {
+      "company_group": "Europe",
+      "category": "Dioramas",
+      "entries": 1,
+      "left0": 0.7150708215297451,
+      "left1": 0.7173937677053825,
+      "right0": 0.8374050991501415,
+      "right1": 0.8397280453257789,
+      "category_share": 0.1
+    },
+    {
+      "company_group": "Europe",
+      "category": "Junior",
+      "entries": 4,
+      "left0": 0.7173937677053825,
+      "left1": 0.7266855524079321,
+      "right0": 0.8809575070821529,
+      "right1": 0.8902492917847025,
+      "category_share": 0.2857142857142857
+    },
+    {
+      "company_group": "Europe",
+      "category": "Ships",
+      "entries": 5,
+      "left0": 0.7266855524079321,
+      "left1": 0.7383002832861191,
+      "right0": 0.9152181303116147,
+      "right1": 0.9268328611898017,
+      "category_share": 0.625
+    },
+    {
+      "company_group": "Europe",
+      "category": "Open / other",
+      "entries": 1,
+      "left0": 0.7383002832861191,
+      "left1": 0.7406232294617565,
+      "right0": 0.9564475920679886,
+      "right1": 0.958770538243626,
+      "category_share": 0.25
+    },
+    {
+      "company_group": "China",
+      "category": "Aircraft",
+      "entries": 14,
+      "left0": 0.8006232294617563,
+      "left1": 0.8331444759206799,
+      "right0": 0.2973371104815864,
+      "right1": 0.3298583569405099,
+      "category_share": 0.09271523178807947
+    },
+    {
+      "company_group": "China",
+      "category": "Civilian vehicles",
+      "entries": 1,
+      "left0": 0.8331444759206799,
+      "left1": 0.8354674220963173,
+      "right0": 0.4802662889518413,
+      "right1": 0.4825892351274787,
+      "category_share": 0.017241379310344827
+    },
+    {
+      "company_group": "China",
+      "category": "Military vehicles",
+      "entries": 8,
+      "left0": 0.8354674220963173,
+      "left1": 0.8540509915014165,
+      "right0": 0.5888611898016998,
+      "right1": 0.607444759206799,
+      "category_share": 0.1951219512195122
+    },
+    {
+      "company_group": "China",
+      "category": "Dioramas",
+      "entries": 1,
+      "left0": 0.8540509915014165,
+      "left1": 0.8563739376770539,
+      "right0": 0.8397280453257789,
+      "right1": 0.8420509915014164,
+      "category_share": 0.1
+    },
+    {
+      "company_group": "China",
+      "category": "Junior",
+      "entries": 2,
+      "left0": 0.8563739376770539,
+      "left1": 0.8610198300283287,
+      "right0": 0.8902492917847025,
+      "right1": 0.8948951841359772,
+      "category_share": 0.14285714285714285
+    },
+    {
+      "company_group": "China",
+      "category": "Ships",
+      "entries": 3,
+      "left0": 0.8610198300283287,
+      "left1": 0.8679886685552409,
+      "right0": 0.9268328611898017,
+      "right1": 0.9338016997167139,
+      "category_share": 0.375
+    },
+    {
+      "company_group": "China",
+      "category": "Open / other",
+      "entries": 1,
+      "left0": 0.8679886685552409,
+      "left1": 0.8703116147308784,
+      "right0": 0.958770538243626,
+      "right1": 0.9610934844192635,
+      "category_share": 0.25
+    },
+    {
+      "company_group": "China",
+      "category": "Special themes",
+      "entries": 1,
+      "left0": 0.8703116147308784,
+      "left1": 0.8726345609065158,
+      "right0": 0.9976770538243626,
+      "right1": 1.0,
+      "category_share": 0.1111111111111111
+    },
+    {
+      "company_group": "US & South Korea",
+      "category": "Aircraft",
+      "entries": 9,
+      "left0": 0.9326345609065155,
+      "left1": 0.9535410764872521,
+      "right0": 0.3298583569405099,
+      "right1": 0.35076487252124644,
+      "category_share": 0.059602649006622516
+    },
+    {
+      "company_group": "US & South Korea",
+      "category": "Civilian vehicles",
+      "entries": 9,
+      "left0": 0.9535410764872521,
+      "left1": 0.9744475920679886,
+      "right0": 0.4825892351274787,
+      "right1": 0.5034957507082153,
+      "category_share": 0.15517241379310345
+    },
+    {
+      "company_group": "US & South Korea",
+      "category": "Military vehicles",
+      "entries": 4,
+      "left0": 0.9744475920679886,
+      "left1": 0.9837393767705381,
+      "right0": 0.607444759206799,
+      "right1": 0.6167365439093485,
+      "category_share": 0.0975609756097561
+    },
+    {
+      "company_group": "US & South Korea",
+      "category": "Sci-fi & mecha",
+      "entries": 4,
+      "left0": 0.9837393767705381,
+      "left1": 0.9930311614730877,
+      "right0": 0.7253314447592069,
+      "right1": 0.7346232294617564,
+      "category_share": 0.09302325581395349
+    },
+    {
+      "company_group": "US & South Korea",
+      "category": "Dioramas",
+      "entries": 2,
+      "left0": 0.9930311614730877,
+      "left1": 0.9976770538243624,
+      "right0": 0.8420509915014164,
+      "right1": 0.8466968838526912,
+      "category_share": 0.2
+    },
+    {
+      "company_group": "US & South Korea",
+      "category": "Junior",
+      "entries": 1,
+      "left0": 0.9976770538243624,
+      "left1": 0.9999999999999999,
+      "right0": 0.8948951841359772,
+      "right1": 0.8972181303116147,
+      "category_share": 0.07142857142857142
+    }
+  ]
+}

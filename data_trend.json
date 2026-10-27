@@ -1,0 +1,30 @@
+[
+  {
+    "year": 2025,
+    "measure": "Model entries",
+    "amount": 313,
+    "index": 100.0,
+    "label": ""
+  },
+  {
+    "year": 2025,
+    "measure": "Registrations",
+    "amount": 95,
+    "index": 100.0,
+    "label": ""
+  },
+  {
+    "year": 2026,
+    "measure": "Model entries",
+    "amount": 322,
+    "index": 102.88,
+    "label": "Entries +2.9%"
+  },
+  {
+    "year": 2026,
+    "measure": "Registrations",
+    "amount": 83,
+    "index": 87.37,
+    "label": "Registrations −12.6%"
+  }
+]

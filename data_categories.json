@@ -1,0 +1,73 @@
+[
+  {
+    "id": "All entries",
+    "parent": null,
+    "entries": 0
+  },
+  {
+    "id": "Aircraft",
+    "parent": "All entries",
+    "entries": 259,
+    "share": 0.31701346389228885
+  },
+  {
+    "id": "Civilian vehicles",
+    "parent": "All entries",
+    "entries": 116,
+    "share": 0.1419828641370869
+  },
+  {
+    "id": "Military vehicles",
+    "parent": "All entries",
+    "entries": 104,
+    "share": 0.12729498164014688
+  },
+  {
+    "id": "Sci-fi & mecha",
+    "parent": "All entries",
+    "entries": 78,
+    "share": 0.09547123623011015
+  },
+  {
+    "id": "Figures",
+    "parent": "All entries",
+    "entries": 78,
+    "share": 0.09547123623011015
+  },
+  {
+    "id": "Vignettes",
+    "parent": "All entries",
+    "entries": 48,
+    "share": 0.0587515299877601
+  },
+  {
+    "id": "Dioramas",
+    "parent": "All entries",
+    "entries": 47,
+    "share": 0.05752753977968176
+  },
+  {
+    "id": "Junior",
+    "parent": "All entries",
+    "entries": 25,
+    "share": 0.030599755201958383
+  },
+  {
+    "id": "Ships",
+    "parent": "All entries",
+    "entries": 24,
+    "share": 0.02937576499388005
+  },
+  {
+    "id": "Open / other",
+    "parent": "All entries",
+    "entries": 23,
+    "share": 0.028151774785801713
+  },
+  {
+    "id": "Special themes",
+    "parent": "All entries",
+    "entries": 15,
+    "share": 0.01835985312117503
+  }
+]

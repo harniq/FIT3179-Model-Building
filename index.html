@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1" name="viewport"/>
+    <meta content="Explore the subjects, scales and international kit brands behind Australian scale model competitions through twelve interactive visualisations." name="description"/>
+    <meta content="#203f32" name="theme-color"/>
+    <title>Small Models, Big World · Harniq Singh</title>
+    <link href="https://fonts.googleapis.com" rel="preconnect"/>
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&amp;family=IBM+Plex+Sans:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+    <link href="style.css" rel="stylesheet"/>
+    <script defer="" src="https://cdn.jsdelivr.net/npm/vega@5.33.1/build/vega.min.js"></script>
+    <script defer="" src="https://cdn.jsdelivr.net/npm/vega-lite@5.23.0/build/vega-lite.min.js"></script>
+    <script defer="" src="https://cdn.jsdelivr.net/npm/vega-embed@6.29.0/build/vega-embed.min.js"></script>
+    <script defer="" src="app.js"></script>
+  </head>
+  <body id="top">
+    <a class="skip-link" href="#story">Skip to the visualisations</a>
+    
+    <!-- HEADER: Title, introduction and headline statistics -->
+    <header class="hero">
+      <div class="hero-top"><span class="eyebrow">SCALE MODEL COMPETITIONS</span><span class="edition">AUSTRALIAN MODEL SHOWS · 2025–26</span></div>
+      <div class="hero-grid">
+        <div>
+          <h1>Small models.<br/><em>Big world.</em></h1>
+          <p class="standfirst">
+            What do Australian model builders choose to build? Results from ScaleACT and the NSW show reveal
+            popular subjects and scales, along with the countries behind the kit brands.
+          </p>
+          <p class="byline">Harniq Singh <span>·</span> FIT3179 <span>·</span> 27 October 2026</p>
+        </div>
+        <aside aria-label="An introduction to model scale" class="scale-card">
+          <span class="eyebrow">WHAT DOES SCALE MEAN?</span>
+          <div class="scale-number">1/48</div>
+          <p>One centimetre on the model represents <strong>48 centimetres</strong> on the real object.</p>
+          <p class="scale-footnote">For the same object, 1/72 makes a smaller model than 1/48.</p>
+        </aside>
+      </div>
+      <div aria-label="ScaleACT 2025 overview" class="hero-stats">
+        <div><strong>817</strong><span>models entered at ScaleACT 2025</span></div>
+        <div><strong>11</strong><span>broad competition categories</span></div>
+        <div><strong>19</strong><span>brands in the verified subset</span></div>
+      </div>
+    </header>
+
+    <!-- NAVIGATION: Jump links for the five sections -->
+    <nav aria-label="Story sections" class="chapter-nav">
+      <a href="#workbench">01 The workbench</a>
+      <a href="#world">02 The world</a>
+      <a href="#brands">03 The brands</a>
+      <a href="#scales">04 The scale</a>
+      <a href="#people">05 The people</a>
+    </nav>
+
+    <!-- MAIN STORY -->
+    <main id="story">
+
+      <!-- ================================================================= -->
+      <!-- SECTION 01: THE WORKBENCH  |  Category totals and scale heatmap -->
+      <!-- ================================================================= -->
+      <section class="chapter" id="workbench">
+        <div class="section-heading">
+          <span class="section-number">01</span>
+          <div>
+            <p class="eyebrow">THE WORKBENCH</p>
+            <h2>Aircraft are the largest category</h2>
+          </div>
+        </div>
+        <p class="section-intro">Builders assemble and paint miniature aircraft, vehicles, ships and imagined worlds. At Canberra’s ScaleACT 2025, aircraft made up almost a third of the <strong>817 entries</strong>. Each entry is a model, and one person can enter several.</p>
+        <div class="split-feature">
+
+          <!-- FIGURE 01  |  chart9_treemap.json -->
+          <figure class="chart-card">
+            <figcaption>
+              <span class="figure-label">Figure 1 · Category totals</span>
+              <h3>One rectangle, one category</h3>
+              <p>Area shows the number of entries. Hover over a rectangle for its category and total.</p>
+            </figcaption>
+            <div aria-label="Treemap of ScaleACT 2025 category totals" class="chart" id="chart9" role="region"></div>
+            <p class="source-note">All 817 ScaleACT 2025 entries.</p>
+          </figure>
+          <aside class="insight-card">
+            <span class="eyebrow">AIRCRAFT ENTRIES</span>
+            <strong class="big-number">31.7<span>%</span></strong>
+            <p><strong>259 aircraft entries</strong> make this the largest category. Civilian vehicles (116) and military vehicles (104) follow.</p>
+            <p class="small">
+              Dioramas and vignettes are miniature scenes. Mecha are fictional robots. Junior and special-theme
+              entries retain the organiser’s class groupings.
+            </p>
+          </aside>
+        </div>
+
+        <!-- FIGURE 02  |  chart1_heatmap.json -->
+        <figure class="chart-card wide">
+          <figcaption>
+            <span class="figure-label">Figure 2 · Scales by category</span>
+            <h3>Different subjects favour different scales</h3>
+            <p>Almost half of aircraft entries use 1/48. Darker squares show a larger share <strong>within that row</strong>. Hover over a square for its count and percentage.</p>
+          </figcaption>
+          <div aria-label="Heatmap of scale shares within 11 model categories" class="chart" id="chart1" role="region"></div>
+          <p class="source-note">All 817 entries. “Other scales” combines scales outside the nine named columns.</p>
+        </figure>
+      </section>
+
+      <!-- ================================================================= -->
+      <!-- SECTION 02: THE WORLD      |  Data coverage and country maps -->
+      <!-- ================================================================= -->
+      <section class="chapter" id="world">
+        <div class="section-heading">
+          <span class="section-number">02</span>
+          <div>
+            <p class="eyebrow">COMPANY COUNTRIES</p>
+            <h2>Where do the kit brands come from?</h2>
+          </div>
+        </div>
+        <p class="section-intro">
+          Kit brands come from companies around the world. The following charts use entries where the brand
+          and its company country could be identified.
+        </p>
+        <div class="coverage-grid">
+
+          <!-- FIGURE 03  |  chart10_coverage.json -->
+          <figure class="chart-card">
+            <figcaption>
+              <span class="figure-label">Figure 3 · Brand matching coverage</span>
+              <h3>353 matches out of 817 entries</h3>
+              <p>Each tile represents one entry. Green tiles have a verified brand-to-company-country match.</p>
+            </figcaption>
+            <div aria-label="Waffle chart showing 353 matched and 464 unmatched entries" class="chart" id="chart10" role="region"></div>
+            <div class="inline-key"><span><i class="swatch green"></i>353 matched</span><span><i class="swatch grey"></i>464 unmatched</span></div>
+            <p class="source-note">Coverage of the prepared ScaleACT dataset.</p>
+          </figure>
+          <aside class="coverage-note">
+            <span class="eyebrow">DATA COVERAGE</span>
+            <strong class="big-number">43.2<span>%</span></strong>
+            <p>
+              of entries are represented in the brand and country analysis. Unclear, compound, custom or
+              unverified brand labels remain unmatched.
+            </p>
+            <p><strong>Company country</strong> is the current company or owner’s location. It does not identify the factory or the builder’s home.</p>
+            <p class="small">The 464 unmatched entries still contribute to the overall category and scale charts.</p>
+          </aside>
+        </div>
+        <div class="two-columns map-pair">
+
+          <!-- FIGURE 04  |  chart2_symbols.json -->
+          <figure class="chart-card">
+            <figcaption>
+              <span class="figure-label">Figure 4 · Matched entries by country</span>
+              <h3>Japan leads the matched counts</h3>
+              <p>Circle area represents entries. Japan accounts for 169 of the 353 matches.</p>
+            </figcaption>
+            <div aria-label="Proportional symbol map of matched entries by company country" class="chart" id="chart2" role="region"></div>
+            <p class="source-note">353 matched entries. Equal Earth projection.</p>
+          </figure>
+
+          <!-- FIGURE 05  |  chart3_choropleth.json -->
+          <figure class="chart-card">
+            <figcaption>
+              <span class="figure-label">Figure 5 · Aircraft share by country</span>
+              <h3>Czechia’s matches are mostly aircraft</h3>
+              <p>Aircraft account for 38 of Czechia’s 39 matches, compared with 42 of Japan’s 169.</p>
+            </figcaption>
+            <div aria-label="Choropleth showing aircraft share within matched company-country entries" class="chart" id="chart3" role="region"></div>
+            <p class="source-note">Grey means no matched data or fewer than 10 matched entries.</p>
+          </figure>
+        </div>
+
+        <!-- FIGURE 06  |  chart4_flow.json -->
+        <figure class="chart-card wide">
+          <figcaption>
+            <span class="figure-label">Figure 6 · Connections to Canberra</span>
+            <h3>Kit brands connect ten countries to Canberra</h3>
+            <p>Thicker curves represent more matched entries. Use the dropdown below to highlight one company country.</p>
+          </figcaption>
+          <div aria-label="Curved flow map connecting company countries to the Canberra exhibition" class="chart" id="chart4" role="region"></div>
+          <p class="source-note"><strong>These are schematic brand-to-exhibition connections, not shipping routes or competitors’ journeys.</strong> Coordinates are approximate country reference points. All three maps use the same country data.</p>
+        </figure>
+      </section>
+
+      <!-- ================================================================= -->
+      <!-- SECTION 03: THE BRANDS     |  Brand rankings, country mix and alluvial -->
+      <!-- ================================================================= -->
+      <section class="chapter" id="brands">
+        <div class="section-heading">
+          <span class="section-number">03</span>
+          <div>
+            <p class="eyebrow">BRANDS AND SUBJECTS</p>
+            <h2>Different subjects favour different brands</h2>
+          </div>
+        </div>
+        <p class="section-intro">The most common brands vary between categories. Use the dropdown to compare them, then see how company-country groups contribute to each subject. These charts use the <strong>353 matched entries</strong>.</p>
+        <div class="two-columns brands-grid">
+
+          <!-- FIGURE 07  |  chart5_brands.json -->
+          <figure class="chart-card">
+            <figcaption>
+              <span class="figure-label">Figure 7 · Brands by category</span>
+              <h3>Which brands appear in your category?</h3>
+              <p>Choose a category below. Dots further to the right represent more entries, with brands ranked by count.</p>
+            </figcaption>
+            <div aria-label="Lollipop chart comparing brand counts with a category selector" class="chart" id="chart5" role="region"></div>
+            <p class="source-note">
+              Brands without matches in the chosen category disappear. Counts describe this show’s matched subset,
+              not sales.
+            </p>
+          </figure>
+
+          <!-- FIGURE 08  |  chart6_country_mix.json -->
+          <figure class="chart-card">
+            <figcaption>
+              <span class="figure-label">Figure 8 · Company-country mix</span>
+              <h3>A different blend for each subject</h3>
+              <p>Every bar totals 100% of its category’s matches. Equal bar lengths do not mean equal numbers of entries.</p>
+            </figcaption>
+            <div aria-label="100 percent stacked bars of company-country group shares within categories" class="chart" id="chart6" role="region"></div>
+            <p class="source-note">
+              Japan-based companies account for the largest share of matched civilian-vehicle and sci-fi entries.
+              Hover to check small category totals.
+            </p>
+          </figure>
+        </div>
+
+        <!-- FIGURE 09  |  chart11_alluvial.json -->
+        <figure class="chart-card wide">
+          <figcaption>
+            <span class="figure-label">Figure 9 · Groups and subjects</span>
+            <h3>Where each group’s matches appear</h3>
+            <p>
+              Follow a ribbon from a company-country group to a subject. A thicker ribbon means more matched
+              entries. Hover over a ribbon for its group, category and count.
+            </p>
+          </figcaption>
+          <div aria-label="Alluvial diagram linking four company-country groups to eleven model categories" class="chart" id="chart11" role="region"></div>
+          <p class="source-note">
+            Europe combines the UK, Czechia, Germany, Italy, Ukraine and Poland. US &amp; South Korea combines those
+            two countries.
+          </p>
+        </figure>
+      </section>
+
+      <!-- ================================================================= -->
+      <!-- SECTION 04: THE SCALES     |  Mosaic and show comparison -->
+      <!-- ================================================================= -->
+      <section class="chapter" id="scales">
+        <div class="section-heading">
+          <span class="section-number">04</span>
+          <div>
+            <p class="eyebrow">MODEL SCALES</p>
+            <h2>Popular scales vary by subject and show</h2>
+          </div>
+        </div>
+        <p class="section-intro">
+          The mosaic shows both the size of each category and its scale mix. The next chart compares scale
+          percentages at two shows with different entry totals.
+        </p>
+
+        <!-- FIGURE 10  |  chart12_mosaic.json -->
+        <figure class="chart-card wide">
+          <figcaption>
+            <span class="figure-label">Figure 10 · Category and scale</span>
+            <h3>Aircraft occupy the widest slice</h3>
+            <p>In this mosaic, column width shows the category’s total and coloured height shows its scale mix. A cell’s <strong>area</strong> represents its share of all 817 entries. Hover over a cell for its scale and count.</p>
+          </figcaption>
+          <div aria-label="Mosaic chart showing the joint distribution of categories and five scale groups" class="chart" id="chart12" role="region"></div>
+          <p class="source-note">
+            The four named scales are shown separately, with all remaining scales combined. Small category names
+            are abbreviated. Hover for full names and counts.
+          </p>
+        </figure>
+        <div class="split-feature comparison-grid">
+
+          <!-- FIGURE 11  |  chart7_scales.json -->
+          <figure class="chart-card">
+            <figcaption>
+              <span class="figure-label">Figure 11 · Comparing two shows</span>
+              <h3>1/35 leads at ScaleACT, while 1/48 leads in NSW</h3>
+              <p>Bars show the share of all entries at each show. Hover over a bar for its count and percentage.</p>
+            </figcaption>
+            <div aria-label="Grouped bars comparing selected scale shares at ScaleACT 2025 and NSW 2026" class="chart" id="chart7" role="region"></div>
+            <p class="source-note">
+              Seven selected scales are shown, so they do not sum to 100%. Denominators: ScaleACT 2025, 817, NSW
+              2026, 322.
+            </p>
+          </figure>
+          <aside class="insight-card light">
+            <span class="eyebrow">THE 1/48 COMPARISON</span>
+            <div class="comparison-stat"><span>ScaleACT 2025</span><strong>18.8%</strong></div>
+            <div class="comparison-stat copper"><span>NSW 2026</span><strong>26.4%</strong></div>
+            <p>A greater share of NSW entries use 1/48, even though ScaleACT has more 1/48 models in absolute numbers.</p>
+            <p class="small">
+              These are different shows in different years. Their contrast cannot isolate a change over time.
+            </p>
+          </aside>
+        </div>
+      </section>
+
+      <!-- ================================================================= -->
+      <!-- SECTION 05: THE PEOPLE     |  Entries and registrations -->
+      <!-- ================================================================= -->
+      <section class="chapter final-chapter" id="people">
+        <div class="section-heading">
+          <span class="section-number">05</span>
+          <div>
+            <p class="eyebrow">ENTRIES AND REGISTRATIONS</p>
+            <h2>More entries, fewer registrations</h2>
+          </div>
+        </div>
+        <p class="section-intro">
+          At the NSW show, model entries increased between 2025 and 2026 while registrations declined. Looking
+          at both measures gives a fuller picture than the entry total alone.
+        </p>
+        <div class="two-columns closing-grid">
+
+          <!-- FIGURE 12  |  chart8_trend.json -->
+          <figure class="chart-card">
+            <figcaption>
+              <span class="figure-label">Figure 12 · Changes from 2025 to 2026</span>
+              <h3>A small rise in entries, a fall in registrations</h3>
+              <p>
+                Both lines start at 100 in 2025. A value above 100 means an increase from that starting point, while
+                below 100 means a decrease. Hover for the original totals.
+              </p>
+            </figcaption>
+            <div aria-label="Indexed comparison of NSW entries and registrations from 2025 to 2026" class="chart" id="chart8" role="region"></div>
+            <p class="source-note">Index = that year’s total ÷ its 2025 total × 100. The axis is an index, not a count.</p>
+          </figure>
+          <aside class="closing-note">
+            <table class="totals-table">
+              <caption>The recorded totals</caption>
+              <thead>
+                <tr>
+                  <th scope="col">Measure</th>
+                  <th scope="col">2025</th>
+                  <th scope="col">2026</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th scope="row">Model entries</th>
+                  <td>313</td>
+                  <td>322</td>
+                </tr>
+                <tr>
+                  <th scope="row">Registrations</th>
+                  <td>95</td>
+                  <td>83</td>
+                </tr>
+                <tr>
+                  <th scope="row">Entries per registration</th>
+                  <td>3.29</td>
+                  <td>3.88</td>
+                </tr>
+              </tbody>
+            </table>
+            <p>The ratio rose by <strong>17.7%</strong>. It is an event-level average: it does not mean every participant entered more models.</p>
+            <p class="small">
+              Two observations at one show do not establish a national or long-term trend. They do show why models
+              and registrations should be counted separately.
+            </p>
+          </aside>
+        </div>
+        <p class="takeaway">
+          Aircraft led the ScaleACT categories, but popular scales differed between shows. In NSW, more model
+          entries did not mean more registrations.
+        </p>
+      </section>
+    </main>
+
+    <!---- FOOTER: Data sources, limitations and acknowledgement -->
+    <footer id="sources">
+      <div class="footer-heading">
+        <h2>Sources <span class="plain-amp">&amp;</span> methods</h2>
+      </div>
+      <p>
+        Authored by Harniq Singh for FIT3179, Monash University.
+      </p>
+      <div class="footer-grid">
+        <div>
+          <h3>Competition records</h3>
+          <p><a href="https://actsms.enter.hobbyshow.org/show-results/10?view=results">ScaleACT 2025 class results</a> · ACT Scale Modellers’ Society.<br/><a href="https://www.actsms.asn.au/about/previous-comps-results/scaleact-25-comp-results">ScaleACT organiser’s report</a> confirms 817 entries.<br/><a href="https://ipma.enter.hobbyshow.org/show-results/5?view=stats">NSW 2025 statistics</a> and <a href="https://ipma.enter.hobbyshow.org/show-results/6?view=stats">NSW 2026 statistics</a> · Illawarra Plastic Modellers’ Association.</p>
+        </div>
+        <div>
+          <h3>Preparation &amp; attribution</h3>
+          <p>
+            Brand names were standardised and matched conservatively to official company profiles. The unmatched
+            records were retained in the overall analysis..
+          </p>
+          <p>Map geometry: public-domain <a href="https://www.naturalearthdata.com/about/terms-of-use/">Natural Earth</a> via <a href="https://github.com/vega/vega-datasets/blob/main/data/world-110m.json">Vega datasets</a>. Charts: Vega and Vega-Lite. Fonts: Fraunces and IBM Plex Sans via Google Fonts.</p>
+        </div>
+      </div>
+      <p class="limitations"><strong>Data limitations:</strong> These shows are examples, not a representative survey of Australian model builders. Brand and country figures cover 353 of the 817 ScaleACT entries. Company country does not establish manufacturing location. Missing values have not been invented.</p>
+      <p class="ai-note"><strong>AI acknowledgement:</strong> ChatGPT assisted with research, data preparation, layout revisions, explanatory wording and validation.</p>
+    </footer>
+  </body>
+</html>

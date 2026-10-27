@@ -1,0 +1,39 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Scale shares use each event's full entry total as the denominator.",
+  "width": "container",
+  "height": 350,
+  "autosize": {"type": "fit", "contains": "padding"},
+  "data": {"url": "data_scales.json"},
+  "mark": "bar",
+  "encoding": {
+    "x": {"field": "scale", "type": "ordinal", "title": "Model scale", "sort": ["1/12", "1/24", "1/32", "1/35", "1/48", "1/72", "1/144"], "axis": {"labelAngle": 0}},
+    "xOffset": {"field": "event", "type": "nominal", "sort": ["ScaleACT 2025", "NSW 2026"]},
+    "y": {"field": "share", "type": "quantitative", "scale": {"domain": [0, 0.3], "zero": true}, "axis": {"title": "Share of all entries at that show", "format": ".0%"}},
+    "color": {"field": "event", "type": "nominal", "scale": {"domain": ["ScaleACT 2025", "NSW 2026"], "range": ["#23634c", "#b65d35"]}, "legend": {"title": "Show"}},
+    "tooltip": [
+      {"field": "event", "title": "Show"},
+      {"field": "scale", "title": "Scale"},
+      {"field": "entries", "type": "quantitative", "title": "Entries"},
+      {"field": "share", "type": "quantitative", "title": "Share of all entries", "format": ".1%"}
+    ]
+  },
+  "config": {
+    "background": "transparent",
+    "font": "IBM Plex Sans",
+    "view": {"stroke": null},
+    "axis": {
+      "labelFontSize": 12,
+      "titleFontSize": 12,
+      "titleFontWeight": 500,
+      "labelColor": "#61716a",
+      "titleColor": "#20372f",
+      "domain": false,
+      "tickColor": "#e6ebe6",
+      "gridColor": "#e6ebe6",
+      "labelPadding": 8,
+      "titlePadding": 12
+    },
+    "legend": {"orient": "bottom", "labelFontSize": 12, "titleFontSize": 12, "titleFontWeight": 500, "labelColor": "#20372f", "titleColor": "#20372f", "padding": 10}
+  }
+}

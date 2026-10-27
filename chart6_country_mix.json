@@ -1,0 +1,49 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Country-group shares within each category's matched entries.",
+  "width": "container",
+  "height": 360,
+  "autosize": {"type": "fit", "contains": "padding"},
+  "data": {"url": "data_country_mix.json"},
+  "mark": "bar",
+  "encoding": {
+    "y": {
+      "field": "category",
+      "type": "nominal",
+      "title": null,
+      "sort": ["Aircraft", "Civilian vehicles", "Military vehicles", "Sci-fi & mecha", "Figures", "Vignettes", "Dioramas", "Junior", "Ships", "Open / other", "Special themes"],
+      "axis": {"labelLimit": 145}
+    },
+    "x": {"field": "entries", "type": "quantitative", "stack": "normalize", "axis": {"title": "Share of this category's matched entries", "format": ".0%"}},
+    "color": {
+      "field": "company_group",
+      "type": "nominal",
+      "scale": {"domain": ["Japan", "Europe", "China", "US & South Korea"], "range": ["#23634c", "#b65d35", "#346b91", "#826789"]},
+      "legend": {"title": null, "columns": 2, "labelLimit": 150}
+    },
+    "tooltip": [
+      {"field": "category", "title": "Category"},
+      {"field": "company_group", "title": "Company-country group"},
+      {"field": "entries", "type": "quantitative", "title": "Matched entries"},
+      {"field": "within_category", "type": "quantitative", "title": "Share of category's matches", "format": ".1%"}
+    ]
+  },
+  "config": {
+    "background": "transparent",
+    "font": "IBM Plex Sans",
+    "view": {"stroke": null},
+    "axis": {
+      "labelFontSize": 12,
+      "titleFontSize": 12,
+      "titleFontWeight": 500,
+      "labelColor": "#61716a",
+      "titleColor": "#20372f",
+      "domain": false,
+      "tickColor": "#e6ebe6",
+      "gridColor": "#e6ebe6",
+      "labelPadding": 8,
+      "titlePadding": 12
+    },
+    "legend": {"orient": "bottom", "labelFontSize": 12, "titleFontSize": 12, "titleFontWeight": 500, "labelColor": "#20372f", "titleColor": "#20372f", "padding": 10}
+  }
+}

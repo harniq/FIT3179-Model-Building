@@ -1,0 +1,128 @@
+{
+  "$schema": "https://vega.github.io/schema/vega/v5.json",
+  "description": "Curved schematic connections to Canberra. Curves are not measured shipping routes.",
+  "width": 900,
+  "height": 450,
+  "padding": 5,
+  "autosize": {"type": "fit", "contains": "padding"},
+  "background": "transparent",
+
+  "signals": [
+    {
+      "name": "countryFocus",
+      "value": "All countries",
+      "bind": {
+        "input": "select", "name": "Company country: ",
+        "options": ["All countries", "Japan", "United Kingdom", "Czechia", "China", "Germany",
+                    "United States", "South Korea", "Italy", "Ukraine", "Poland"]
+      }
+    }
+  ],
+
+  "projections": [
+    {"name": "worldProjection", "type": "equalEarth",
+     "fit": {"signal": "data('world')"}, "size": {"signal": "[width, height-30]"}}
+  ],
+
+  "data": [
+    {
+      "name": "world", "url": "world-map.json",
+      "format": {"type": "topojson", "feature": "countries"},
+      "transform": [{"type": "filter", "expr": "datum.id != 10"}]
+    },
+    {
+      "name": "destination",
+      "values": [{"lon": 149.13, "lat": -35.28, "place": "Canberra"}],
+      "transform": [{"type": "geopoint", "projection": "worldProjection",
+                     "fields": ["lon", "lat"], "as": ["x", "y"]}]
+    },
+    {
+      "name": "countries", "url": "data_countries.json",
+      "transform": [
+        {"type": "geopoint", "projection": "worldProjection",
+         "fields": ["lon", "lat"], "as": ["x", "y"]},
+        {"type": "linkpath", "orient": "horizontal", "shape": "diagonal",
+         "sourceX": "x", "sourceY": "y",
+         "targetX": {"expr": "data('destination')[0].x"},
+         "targetY": {"expr": "data('destination')[0].y"}, "as": "curve"}
+      ]
+    }
+  ],
+
+  "scales": [
+    {"name": "lineSize", "type": "linear", "domain": [0, 180],
+     "range": [0, 10], "zero": true}
+  ],
+
+  "marks": [
+    {
+      "type": "shape", "from": {"data": "world"},
+      "transform": [{"type": "geoshape", "projection": "worldProjection"}],
+      "encode": {"update": {
+        "fill": {"value": "#e5eae3"}, "stroke": {"value": "white"},
+        "strokeWidth": {"value": 0.7}
+      }}
+    },
+    {
+      "name": "routes", "type": "path", "from": {"data": "countries"},
+      "encode": {"update": {
+        "path": {"field": "curve"}, "fill": {"value": null},
+        "stroke": {"value": "#23634c"},
+        "strokeWidth": {"scale": "lineSize", "field": "entries"},
+        "strokeOpacity": {"signal": "countryFocus == 'All countries' || datum.country == countryFocus ? 0.8 : 0.035"},
+        "tooltip": {"signal": "{'Company country':datum.country,'Matched entries':datum.entries,'Destination':'Canberra exhibition','Connection':'Schematic, not a shipping route'}"}
+      }}
+    },
+    {
+      "name": "origins", "type": "symbol", "from": {"data": "countries"},
+      "encode": {"update": {
+        "x": {"field": "x"}, "y": {"field": "y"},
+        "size": {"value": 35}, "fill": {"value": "#23634c"},
+        "stroke": {"value": "white"},
+        "opacity": {"signal": "countryFocus == 'All countries' || datum.country == countryFocus ? 1 : 0.2"},
+        "tooltip": {"signal": "{'Company country':datum.country,'Matched entries':datum.entries}"}
+      }}
+    },
+    {
+      "type": "text", "from": {"data": "countries"},
+      "encode": {"update": {
+        "x": {"field": "x"}, "y": {"field": "y"},
+        "dy": {"value": -12}, "align": {"value": "center"},
+        "font": {"value": "IBM Plex Sans"}, "fontSize": {"value": 12},
+        "fontWeight": {"value": 600}, "fill": {"value": "#20372f"},
+        "text": {"field": "country"},
+        "opacity": {"signal": "countryFocus != 'All countries' && datum.country == countryFocus ? 1 : 0"}
+      }}
+    },
+    {
+      "type": "symbol", "from": {"data": "destination"},
+      "encode": {"update": {
+        "x": {"field": "x"}, "y": {"field": "y"},
+        "shape": {"value": "diamond"}, "size": {"value": 140},
+        "fill": {"value": "#b65d35"}, "stroke": {"value": "white"},
+        "strokeWidth": {"value": 1.5}
+      }}
+    },
+    {
+      "type": "text", "from": {"data": "destination"},
+      "encode": {"update": {
+        "x": {"field": "x"}, "y": {"field": "y"},
+        "dy": {"value": 23}, "align": {"value": "center"},
+        "text": {"value": "Canberra"}, "font": {"value": "IBM Plex Sans"},
+        "fontSize": {"value": 13}, "fontWeight": {"value": 600},
+        "fill": {"value": "#20372f"}
+      }}
+    }
+  ],
+
+  "legends": [
+    {
+      "strokeWidth": "lineSize", "orient": "bottom",
+      "title": "Matched entries", "values": [15, 50, 150],
+      "symbolType": "stroke", "symbolStrokeColor": "#23634c",
+      "symbolSize": 500, "labelFont": "IBM Plex Sans",
+      "titleFont": "IBM Plex Sans", "labelFontSize": 12,
+      "titleFontSize": 12, "titleFontWeight": 500
+    }
+  ]
+}

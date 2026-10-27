@@ -1,0 +1,55 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "ScaleACT 2025 scale distribution within each category. Hover for exact entry counts.",
+  "width": "container",
+  "height": 420,
+  "autosize": {"type": "fit", "contains": "padding"},
+  "config": {
+    "background": "transparent",
+    "font": "IBM Plex Sans",
+    "view": {"stroke": null},
+    "axis": {
+      "labelFontSize": 12,
+      "titleFontSize": 12,
+      "titleFontWeight": 500,
+      "labelColor": "#61716a",
+      "titleColor": "#20372f",
+      "domain": false,
+      "tickColor": "#e6ebe6",
+      "gridColor": "#e6ebe6",
+      "labelPadding": 8,
+      "titlePadding": 12
+    },
+    "legend": {"orient": "bottom", "labelFontSize": 12, "titleFontSize": 12, "titleFontWeight": 500, "labelColor": "#20372f", "titleColor": "#20372f", "padding": 10}
+  },
+  "data": {"url": "data_heatmap.json"},
+  "encoding": {
+    "x": {
+      "field": "scale",
+      "type": "ordinal",
+      "sort": ["1/12", "1/24", "1/32", "1/35", "1/48", "1/72", "1/144", "1/350", "1/700", "Other scales"],
+      "title": null,
+      "axis": {"labelAngle": -35, "labelLimit": 90}
+    },
+    "y": {
+      "field": "category",
+      "type": "nominal",
+      "sort": ["Aircraft", "Civilian vehicles", "Military vehicles", "Sci-fi & mecha", "Figures", "Vignettes", "Dioramas", "Junior", "Ships", "Open / other", "Special themes"],
+      "title": null,
+      "axis": {"labelLimit": 150}
+    },
+    "tooltip": [
+      {"field": "category", "type": "nominal", "title": "Category"},
+      {"field": "scale", "type": "ordinal", "title": "Model scale"},
+      {"field": "entries", "type": "quantitative", "title": "Entries"},
+      {"field": "within_category", "type": "quantitative", "title": "Share within category", "format": ".1%"}
+    ],
+    "color": {
+      "field": "within_category",
+      "type": "quantitative",
+      "scale": {"domain": [0, 1], "range": ["#eef3e7", "#16573d"]},
+      "legend": {"title": "Share within each category", "format": ".0%", "gradientLength": 180, "values": [0, 0.5, 1]}
+    }
+  },
+  "mark": {"type": "rect", "stroke": "white", "strokeWidth": 2}
+}

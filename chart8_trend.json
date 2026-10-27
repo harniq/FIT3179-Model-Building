@@ -1,0 +1,89 @@
+
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "NSW 2025–2026: entries rose while registrations fell. Both series indexed to 2025=100.",
+  "width": "container",
+  "height": 285,
+  "autosize": {"type": "fit", "contains": "padding"},
+
+  "config": {
+    "background": "transparent",
+    "font": "IBM Plex Sans",
+    "view": {"stroke": null},
+    "axis": {
+      "labelFontSize": 12, "titleFontSize": 12, "titleFontWeight": 500,
+      "labelColor": "#61716a", "titleColor": "#20372f",
+      "domain": false, "tickColor": "#e6ebe6", "gridColor": "#e6ebe6",
+      "labelPadding": 8, "titlePadding": 12
+    },
+    "legend": {
+      "orient": "bottom", "labelFontSize": 12, "titleFontSize": 12,
+      "titleFontWeight": 500, "labelColor": "#20372f",
+      "titleColor": "#20372f", "padding": 10
+    }
+  },
+
+  "data": {"url": "data_trend.json"},
+
+  "encoding": {
+    "x": {
+      "field": "year", "type": "ordinal",
+      "axis": {"labelAngle": 0, "title": null},
+      "scale": {"padding": 0.3}
+    },
+    "y": {
+      "field": "index", "type": "quantitative",
+      "scale": {"domain": [80, 110], "zero": false},
+      "axis": {"title": "Index · 2025 = 100", "values": [80, 90, 100, 110]}
+    },
+    "tooltip": [
+      {"field": "measure", "type": "nominal", "title": "Measure"},
+      {"field": "year", "type": "ordinal", "title": "Year"},
+      {"field": "amount", "type": "quantitative", "title": "Recorded total"},
+      {"field": "index", "type": "quantitative", "title": "Index (2025 = 100)", "format": ".1f"}
+    ]
+  },
+
+  "layer": [
+    {
+      "mark": {"type": "rule", "color": "#aab8ad", "strokeDash": [4, 4]},
+      "encoding": {
+        "y": {"datum": 100},
+        "x": {"value": 0},
+        "x2": {"value": "width"}
+      }
+    },
+    {
+      "mark": {
+        "type": "line", "point": {"filled": true, "size": 90},
+        "strokeWidth": 3
+      },
+      "encoding": {
+        "color": {
+          "field": "measure", "type": "nominal",
+          "scale": {
+            "domain": ["Model entries", "Registrations"],
+            "range": ["#23634c", "#b65d35"]
+          },
+          "legend": {"title": null}
+        }
+      }
+    },
+    {
+      "transform": [{"filter": "datum.year == 2026 && datum.measure == 'Model entries'"}],
+      "mark": {
+        "type": "text", "align": "right", "dx": -12, "dy": -16,
+        "fontSize": 13, "fontWeight": 600, "color": "#23634c"
+      },
+      "encoding": {"text": {"field": "label"}}
+    },
+    {
+      "transform": [{"filter": "datum.year == 2026 && datum.measure == 'Registrations'"}],
+      "mark": {
+        "type": "text", "align": "right", "dx": -12, "dy": 22,
+        "fontSize": 13, "fontWeight": 600, "color": "#b65d35"
+      },
+      "encoding": {"text": {"field": "label"}}
+    }
+  ]
+}

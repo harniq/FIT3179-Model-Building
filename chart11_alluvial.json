@@ -1,0 +1,86 @@
+{
+  "$schema": "https://vega.github.io/schema/vega/v5.json",
+  "description": "Flow diagram linking company-country groups to categories for 353 matched entries. Line thickness represents counts.",
+  "width": 900,
+  "height": 470,
+  "padding": {"left": 5, "right": 5, "top": 22, "bottom": 5},
+  "autosize": {"type": "fit", "contains": "padding"},
+  "background": "transparent",
+  "signals": [
+    {"name": "leftX", "update": "width < 550 ? 96 : 138"},
+    {"name": "rightX", "update": "width - (width < 550 ? 110 : 150)"},
+    {"name": "plotH", "update": "height-10"}
+  ],
+  "data": [
+    {
+      "name": "links",
+      "url": "data_alluvial.json",
+      "format": {"type": "json", "property": "links"},
+      "transform": [
+        {
+          "type": "linkpath",
+          "shape": "diagonal",
+          "orient": "horizontal",
+          "sourceX": {"expr": "leftX+9"},
+          "sourceY": {"expr": "(datum.left0+datum.left1)/2*plotH"},
+          "targetX": {"expr": "rightX"},
+          "targetY": {"expr": "(datum.right0+datum.right1)/2*plotH"},
+          "as": "path"
+        }
+      ]
+    },
+    {"name": "nodes", "url": "data_alluvial.json", "format": {"type": "json", "property": "nodes"}}
+  ],
+  "scales": [{"name": "color", "type": "ordinal", "domain": ["Japan", "Europe", "China", "US & South Korea"], "range": ["#23634c", "#b65d35", "#346b91", "#826789"]}],
+  "marks": [
+    {
+      "type": "path",
+      "from": {"data": "links"},
+      "encode": {
+        "update": {
+          "path": {"field": "path"},
+          "tooltip": {
+            "signal": "{'Company group':datum.company_group,'Category':datum.category,'Matched entries':datum.entries,'Share of category matches':format(datum.category_share,'.1%')}"
+          },
+          "fill": {"value": null},
+          "stroke": {"scale": "color", "field": "company_group"},
+          "strokeWidth": {"signal": "datum.entries*plotH/353"},
+          "strokeOpacity": {"value": 0.64}
+        }
+      }
+    },
+    {
+      "name": "groupNodes",
+      "type": "rect",
+      "from": {"data": "nodes"},
+      "encode": {
+        "update": {
+          "x": {"signal": "datum.side == 'left' ? leftX : rightX"},
+          "width": {"value": 9},
+          "y": {"signal": "datum.y0*plotH"},
+          "y2": {"signal": "datum.y1*plotH"},
+          "fill": {"signal": "datum.side == 'left' ? scale('color',datum.label) : '#9cab9d'"},
+          "tooltip": {"signal": "{'Group':datum.label,'Matched entries':datum.entries}"}
+        }
+      }
+    },
+    {
+      "type": "text",
+      "interactive": false,
+      "from": {"data": "nodes"},
+      "encode": {
+        "update": {
+          "x": {"signal": "datum.side == 'left' ? leftX-10 : rightX+19"},
+          "y": {"signal": "(datum.y0+datum.y1)/2*plotH"},
+          "align": {"signal": "datum.side == 'left' ? 'right' : 'left'"},
+          "baseline": {"value": "middle"},
+          "text": {"field": "label"},
+          "limit": {"signal": "datum.side == 'left' ? leftX-10 : width-rightX-19"},
+          "font": {"value": "IBM Plex Sans"},
+          "fontSize": {"signal": "width < 550 ? 10 : 12"},
+          "fill": {"value": "#20372f"}
+        }
+      }
+    }
+  ]
+}
